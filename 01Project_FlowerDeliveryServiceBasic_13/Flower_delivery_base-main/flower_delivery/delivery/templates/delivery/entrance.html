@@ -1,0 +1,39 @@
+{% extends 'delivery/deliver.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center">Вход на сайт</h3>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_email">Электронная почта</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div class="text-danger">{{ form.email.errors }}</div>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+    {% if messages %}
+        <div class="mt-4" id="messages-container">
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Находим контейнер с сообщениями
+        const messagesContainer = document.getElementById('messages-container');
+
+        // Проверяем, есть ли сообщения
+        if (messagesContainer) {
+            // Устанавливаем таймер на 3 секунды для скрытия сообщения
+            setTimeout(() => {
+                messagesContainer.style.display = 'none'; // Скрываем контейнер с сообщениями
+            }, 3000); // 3000 миллисекунд = 3 секунды
+        }
+    });
+</script>
+
+{% endblock %}
