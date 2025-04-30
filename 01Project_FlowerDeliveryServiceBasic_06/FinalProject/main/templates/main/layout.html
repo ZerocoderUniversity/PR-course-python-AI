@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block title %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <aside class="col-md-3 p-3">
+            <div class="text-center mb-4">
+                <img src="{% static 'main/img/flower logo.jpg' %}" class="img-fluid" width="250px" alt="Логотип">
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'home' %}">Главная</a> <!-- Замените # на фактический URL -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Регистрация</a> <!-- Замените # на фактический URL -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'product_list' %}">Каталог Букетов</a> <!-- Замените # на фактический URL -->
+                </li>
+            </ul>
+        </aside>
+        <main class="col-md-9">
+            <div class="content p-3">
+                {% block content %}
+
+
+
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+</div>
+
+ <!-- Подключение JavaScript Bootstrap и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Скрипт для валидации формы -->
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+
+
+ <footer style="background-color: #f8f9fa; padding: 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+        <h4>Контактная информация</h4>
+        <p>Адрес: 123456, г. Москва, ул. Примерная, д. 10</p>
+        <p>Телефон: <a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
+        <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+
+        <div style="margin-top: 10px;">
+            <a href="https://www.facebook.com" target="_blank" style="margin-right: 10px;">Facebook</a>
+            <a href="https://www.twitter.com" target="_blank" style="margin-right: 10px;">Twitter</a>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 10px; color: #6c757d;">&copy; 2023 Компания «Пример». Все права защищены.</p>
+    </div>
+</footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>

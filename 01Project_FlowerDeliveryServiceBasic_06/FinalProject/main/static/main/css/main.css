@@ -1,0 +1,56 @@
+
+body
+ {
+  background-image: url('../img/fl.jpg');
+   background-size: cover;
+    }
+     /* Это обеспечит, что изображение покроет весь экран */
+
+.nav-link
+{
+    color: black; /* Устанавливает цвет текста, чтобы он был читаемым на розовом фоне */
+    font-size: 2em; /* Увеличивает размер шрифта в полтора раза */
+    padding: 10px 20px; /* Добавляет отступы, чтобы кнопки стали больше */
+    border-radius: 5px; /* Скругляет углы кнопок */
+    text-align: center; /* Выравнивает текст по центру */
+    display: inline-block; /* Меняет модель отображения, чтобы padding применялся корректно */
+    margin-bottom: 5px; /* Добавляет отступ между кнопками */
+}
+
+.nav-link:hover
+{
+    background-color: #ff99cc; /* Изменяет цвет кнопки при наведении */
+    text-decoration: none; /* Убирает подчеркивание при наведении */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background-color: #f8f9fa; /* Цвет фона футера */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+footer a {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+footer p {
+    margin-bottom: 5px;
+}

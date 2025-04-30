@@ -1,0 +1,61 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    <title>Страница заказа</title>
+{% endblock %}
+
+{% block content %}
+    <h1 class="my-4">Страница заказа</h1>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        <!-- Основные поля формы заказа -->
+        <div class="form-group">
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div class="mb-3">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    <div class="invalid-feedback">
+                        {{ field.errors }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Поля для продуктов и количества -->
+        <h3 class="my-3">Продукты</h3>
+        <div id="order-items">
+            {% for formset in form.items %}
+                <div class="form-row align-items-end">
+                    <div class="col-md-6">
+                        {{ formset.product.label_tag }}
+                        {{ formset.product }}
+                        <div class="invalid-feedback">
+                            {{ formset.product.errors }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        {{ formset.quantity.label_tag }}
+                        {{ formset.quantity }}
+                        <div class="invalid-feedback">
+                            {{ formset.quantity.errors }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Кнопка для добавления новых продуктов в заказ -->
+        <button type="button" id="add-item" class="btn btn-secondary my-3">Добавить продукт</button>
+
+        <button type="submit" class="btn btn-primary">Заказать</button>
+    </form>
+
+    <script>
+        document.getElementById("add-item").addEventListener("click", function() {
+            // Логика для динамического добавления формы для нового продукта.
+            // Здесь можно использовать JavaScript для клонирования шаблона формы.
+        });
+    </script>
+{% endblock %}
