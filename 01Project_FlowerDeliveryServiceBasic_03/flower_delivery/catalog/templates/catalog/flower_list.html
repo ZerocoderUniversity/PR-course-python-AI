@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список цветов</title>
+</head>
+<body>
+    <h1>Цветы</h1>
+    <ul>
+        {% for flower in flowers %}
+            <li>{{ flower.name }} - {{ flower.price }} руб.</li>
+        {% empty %}
+            <li>Цветы отсутствуют.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
