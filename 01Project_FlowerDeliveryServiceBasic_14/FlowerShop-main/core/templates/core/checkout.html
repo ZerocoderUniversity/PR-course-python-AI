@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+    <h1>Оформление заказа</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if cart_products %}
+        <ul>
+            {% for cart_product in cart_products %}
+                <li>{{ cart_product.product.name }} - {{ cart_product.quantity }} шт. - {{ cart_product.product.price }} руб. за шт.</li>
+            {% endfor %}
+        </ul>
+        <p>Общая стоимость: {{ total_price }} руб.</p>
+        <form method="POST" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="address" class="form-label">Адрес доставки</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Комментарий</label>
+                <textarea class="form-control" id="comment" name="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
+        </form>
+    {% else %}
+        <p>У вас нет товаров в корзине. <a href="{% url 'home' %}">Перейти в каталог</a></p>
+    {% endif %}
+{% endblock %}
