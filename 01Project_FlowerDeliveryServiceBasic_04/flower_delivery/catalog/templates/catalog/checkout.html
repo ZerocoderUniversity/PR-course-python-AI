@@ -1,0 +1,37 @@
+<!-- catalog/templates/catalog/checkout.html -->
+{% extends 'catalog/layout.html' %}
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+    <h1>Оформление заказа</h1>
+
+    {% if cart %}
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Итого</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item_id, item in cart.items %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.price|floatformat:2 }} руб.</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.price|floatformat:2 }} руб.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>Общая сумма: </strong>{{ total_price|floatformat:2 }} руб.</p>
+            <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
+        </form>
+    {% else %}
+        <p>Ваша корзина пуста.</p>
+    {% endif %}
+{% endblock %}

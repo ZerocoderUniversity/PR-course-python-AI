@@ -1,0 +1,17 @@
+<!-- users/templates/users/login.html -->
+{% extends 'catalog/layout.html' %}
+{% block title %}
+    Вход
+{% endblock %}
+
+{% block content %}
+    <h2>Вход</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Далее</button>
+    </form>
+    <br>
+    <p>Если Вы не зарегистрированы, то для оформления заказа необходимо  <a href="{% url 'register' %}">зарегистрироваться!!!</a>.</p>
+{% endblock %}}
+

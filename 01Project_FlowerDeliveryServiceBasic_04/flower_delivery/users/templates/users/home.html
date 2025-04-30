@@ -1,0 +1,20 @@
+<!-- users/templates/users/home.html -->
+{% extends 'catalog/layout.html' %}
+
+{% block title %}
+    Домашняя страница
+{% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать в Службу доставки цветов</h1>
+    <p>Здесь Вы можете заказать свежие цветы!</p>
+
+    <h2>Quick Links</h2>
+    <ul>
+        <li><a href="{% url 'register' %}">Register</a> - Создайте учетную запись для размещения заказовs</li>
+        <li><a href="{% url 'login' %}">Login</a> - Получите доступ к своей учетной записи</li>
+
+    </ul>
+{% endblock %}}
+
+
