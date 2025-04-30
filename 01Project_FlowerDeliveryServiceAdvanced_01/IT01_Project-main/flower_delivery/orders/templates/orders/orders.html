@@ -1,0 +1,49 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Мои заказы</h1>
+{% if user.is_authenticated %}
+
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Заказ</th>
+                    <th>Дата заказа</th>
+                    <th>Сумма заказа</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                               {{ order.created_at }}
+
+                            </div>
+                        </td>
+                        <td>{{ order.total_price }} ₽</td>
+                        <td>{{ order.get_status_display }}</td>
+                        <td><a href="{% url 'order_view' order.id %}">Подробнее</a><br>
+                            <a href="{% url 'order_repeat' order.id %}">Повторить заказ</a></td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+</div>
+<div class="container mt-4">
+    <p>Для просмотра подробной информации о заказе нажмите ссылку "Подробнее".</p>
+    <p>Для повтора заказа нажмите ссылку "Повторить заказ".</p>
+{% else %}
+    <p class="text-center">Для показа списка ваших заказов надо авторизоваться</p>
+{% endif %}
+</div>
+
+
+{% endblock %}

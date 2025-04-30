@@ -1,0 +1,11 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Запрет просмотра{% endblock %}
+{% block content %}
+ <div class="container mt-5">
+        <h1 class="text-center">Доступ к просмотру заказа запрещен</h1>
+        <p class="text-center">Пожалуйста пройдите корректную авторизацию </p>
+        <div class="text-center mt-4">
+            <a href="{% url 'catalog' %}" class="btn btn-primary">Перейти в каталог</a>
+        </div>
+ </div>
+{% endblock %}

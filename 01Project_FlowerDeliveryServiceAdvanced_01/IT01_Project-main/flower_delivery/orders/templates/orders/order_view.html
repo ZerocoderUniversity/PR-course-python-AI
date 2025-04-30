@@ -1,0 +1,46 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Заказ{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Информация о заказе {{ order.id }} от {{ order.created_at }}</h2>
+    <p>Имя заказчика: {{ order.customer_name }}</p>
+    <p>Телефон: {{ order.phone }}</p>
+    <p>Email: {{ order.email }}</p>
+    <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Название товара</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Сумма</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.cart.cartitem_set.all %}
+                    <tr>
+                        <td>{{ item.flowers.title }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                {{ item.quantity }}
+                            </div>
+                        </td>
+                        <td>{{ item.flowers.price }} ₽</td>
+                        <td>{{ item.total_price }} ₽</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>Итого:</strong></td>
+                    <td><strong>{{ order.cart.total_price }} ₽</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    <p>Адрес доставки: {{ order.address }}</p>
+    <p>Статус: {{ order.get_status_display }}</p>
+
+    <p><a href="{% url 'order_repeat' order.id %}" class="btn btn-success">Повторить заказ</a></p>
+
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Каталог цветов{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center">Каталог цветов</h1>
+    <div class="row">
+        {% if flowers %}
+            {% for flower in flowers %}
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="card flex-fill">
+                        <img class="card-img-top" src="{{ flower.image.url }}" alt="Card image cap">
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title">{{ flower.title }}</h2>
+                            <p class="card-text">{{ flower.short_description }}</p>
+                            <p class="card-text">{{ flower.price }} руб.</p>
+                            <p class="card-text text-muted">
+                                <small>{% if flower.on_sale %}В наличии{% else %}Нет в наличии{% endif %}</small>
+                            </p>
+                            <p class="card-text text-muted mt-auto">
+                                <small>{% if flower.on_sale %}<a href="{% url 'add_to_cart' flower.id %}">В корзину</a>{% endif %}</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>Букетов пока нет</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Доставка цветов профиль{% endblock %}
+{% block content %}
+<div class="container mt-5">
+
+        <div class="card-header">
+            <h2 class="mb-0">Редактирование пользователя</h2>
+        </div>
+      <form method="POST">
+        {% csrf_token %}
+      <div class="form-group">
+           <label for="user_form.first_name">Имя </label>
+           {{ user_form.first_name }}</div>
+       <div class="form-group">
+            <label for="user_form.last_name">Фамилия</label>
+           {{ user_form.last_name }}</div>
+       <div class="form-group">
+            <label for="profile_form.phone_number">Телефон</label>
+           {{ profile_form.phone_number }}</div>
+       <div class="form-group">
+            <label for="profile_form.address">Телефон</label>
+           {{ profile_form.address }}</div>
+       <button type="submit" class="btn btn-primary">Сохранить</button>
+      </form>
+</div>
+{% endblock %}

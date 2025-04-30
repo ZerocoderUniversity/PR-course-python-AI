@@ -1,0 +1,80 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Ваша корзина</h1>
+{% if cart == None %}
+        <div class="alert alert-warning text-center" role="alert">
+            Ваша корзина пуста. Добавьте товары в корзину, чтобы продолжить.
+        </div>
+{% else %}
+    <form id="cart-form" method="POST" action="update_cart_item">
+        {% csrf_token %}
+        <input type="hidden" name="cart_id" value="{{ cart.id }}">
+
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Название товара</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Сумма</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart.cartitem_set.all %}
+                    <tr>
+                        <td>{{ item.flowers.title }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="changeQuantity('{{ item.id }}', -1)">-</button>
+                                <input type="number" name="quantity_{{ item.id }}" class="form-control mx-2" value="{{ item.quantity }}" min="0" style="width: 60px;" readonly>
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="changeQuantity('{{ item.id }}', 1)">+</button>
+                            </div>
+                        </td>
+                        <td>{{ item.flowers.price }} ₽</td>
+                        <td>{{ item.total_price }} ₽</td>
+                        <td>
+                            <input type="hidden" name="cart_item_id_{{ item.id }}" value="{{ item.id }}">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>Итого:</strong></td>
+                    <td><strong>{{ cart.total_price }} ₽</strong></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Обновить корзину</button>
+            <a href="{% url 'order_create' %}" class="btn btn-success">Оформить заказ</a>
+        </div>
+
+        {% if stat != None %}
+        <p class="text-center mt-3"> {{ stat }}</p>
+        {% endif %}
+    </form>
+</div>
+<div class="container mt-4">
+    <p>Для изменения количества товара в корзине необходимо сделать следующее:</p>
+    <li>нажмите на кнопку "плюс" или "минус" для изменения количества</li>
+    <li>нажмите на кнопку "Обновить корзину" для пересчета корзины</li>
+    <p>Если хотите удалить товар из корзины уменьшите количество до 0 и нажмите "Обновить корзину"</p>
+{% endif %}
+</div>
+<script>
+    function changeQuantity(itemId, change) {
+        const quantityInput = document.querySelector(`input[name="quantity_${itemId}"]`);
+        let currentQuantity = parseInt(quantityInput.value);
+        currentQuantity += change;
+        if (currentQuantity < 0) currentQuantity = 0;  // Запрет отрицательного количества
+        quantityInput.value = currentQuantity;
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Доставка цветов вход в профиль{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Вход </h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p class="lead text-center">Добро пожаловать в наш цветочный магазин! Чтобы насладиться всеми преимуществами нашего сервиса, пожалуйста, войдите в свой аккаунт или создайте новый. </p>
+          <div class="user-profile">
+
+        <form method="post" class="card p-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                {{ form.password }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Войти</button>
+        </form>
+        {% if error %}
+            <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+    </div>
+            <p class="lead text-center">Если Вы не зарегистрированы, то регистрация займет всего пару минут, и вы сможете получать эксклюзивные предложения, отслеживать свои заказы и сохранять любимые букеты. </p>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+
+        <a href="{% url 'register' %}" class="btn btn-success">Зарегистрироваться</a>
+    </div>
+</div>
+
+{% endblock %}

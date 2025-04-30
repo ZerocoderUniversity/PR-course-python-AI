@@ -1,0 +1,11 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+ <div class="container mt-5">
+        <h1 class="text-center">Ваш заказ успешно оформлен</h1>
+        <p class="text-center">Спасибо за ваш заказ! Вы можете оформить еще один заказ прямо сейчас, перейдя в каталог.</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'catalog' %}" class="btn btn-primary">Перейти в каталог</a>
+        </div>
+ </div>
+{% endblock %}

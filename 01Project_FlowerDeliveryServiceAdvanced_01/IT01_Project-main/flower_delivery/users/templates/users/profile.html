@@ -1,0 +1,23 @@
+{% extends 'flowers/layout.html' %}
+{% block title %}Доставка цветов профиль{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Профиль пользователя</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Ваш логин: <strong>{{ user.username }}</strong></p>
+            <p class="card-text">Ваш email: <strong>{{ user.email }}</strong></p>
+            <p class="card-text">Ваше имя: <strong>{{ user.first_name }}</strong></p>
+            <p class="card-text">Ваша фамилия: <strong>{{ user.last_name }}</strong></p>
+            <p class="card-text">Ваш номер телефона: <strong>{{ user.profile.phone_number }}</strong></p>
+            <p class="card-text">Ваш адрес: <strong>{{ user.profile.address }}</strong></p>
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary">Редактировать профиль</a>
+                <a href="{% url 'logout' %}" class="btn btn-danger">Выход</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
