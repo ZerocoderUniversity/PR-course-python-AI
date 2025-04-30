@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'shop/css/main.css' %}">
+    {% block title %}
+    <title>Flowers Shop</title>
+    {% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-md-3 bg-light p-4">
+                <div class="text-center mb-4">
+                    <img src="{% static 'shop/img/logo2.png' %}" alt="Bernardo's FLOWERS" class="img-fluid" width="150px">
+                    <h2>Магазин цветов</h2>
+                </div>
+                <nav>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'index' %}">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'page2' %}">Второстепенная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'page3' %}">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'page4' %}">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="col-md-9">
+                <div class="container">
+                    {% block content %}
+                    <!-- Здесь будет ваш контент -->
+                    <h1 class="mt-4">Добро пожаловать в наш магазин цветов!</h1>
+                    <p>Мы предлагаем широкий выбор свежих цветов и букетов на любой случай.</p>
+                    {% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
