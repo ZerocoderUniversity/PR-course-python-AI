@@ -1,0 +1,36 @@
+{% extends 'shop/layout.html' %}
+
+{% block title %}
+	<title>Заказы</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="container my-3">
+    <h2>Ваши заказы</h2>
+    <ul class="list-group">
+       {% for order in orders %}
+            <li>
+                Заказ №{{ order.id }} - от: {{ order.created_at }} (заказчик {{ order.user.username }})
+                <ul>
+                    {% for product in order.products.all %}
+                        <li>{{ product.name }} - Цена: {{ product.price }} рублей</li>
+                    {% endfor %}
+                </ul>
+                    <form action="{% url 'delete_order' order.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Получены</button>
+                    </form>
+            </li>
+        {% empty %}
+            <li class="list-group-item">Нет заказов</li>
+        {% endfor %}
+        <form method="post" action="{% url 'send_orders_to_telegram' %}">
+            {% csrf_token %}
+        <button type="submit">Отправить в телеграмм бота</button>
+</form>
+    </ul>
+</div>
+
+{% endblock %}

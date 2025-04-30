@@ -1,0 +1,33 @@
+{% extends 'shop/layout.html' %}
+
+{% block title %}
+	<title>Каталог</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container  my-3">
+    <div class="row">
+        {% if flowers %}
+            {% for flower in flowers %}
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static flower.image_link %}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{flower.name}}</h5>
+                            <p class="card-text">{{flower.description}} <br> <b>ЦЕНА: {{flower.price}} рублей </b> </p>
+                            <form method="post" action="{% url 'add_to_shopping' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="flower_name" value="{{flower.name}}">
+                                <input type="hidden" name="flower_id" value="{{flower.id}}">
+                                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

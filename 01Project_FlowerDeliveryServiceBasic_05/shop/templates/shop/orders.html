@@ -1,0 +1,38 @@
+{% extends 'shop/layout.html' %}
+
+{% block title %}
+	<title>Корзина</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container my-3">
+    <h2>Ваша корзина</h2>
+    <ul class="list-group">
+        {% for product in products %}
+            <li class="list-group-item">
+				<img src="{% static product.image_link %}" weight="200" height="200">
+                <h5>{{ product.name }}</h5>
+                <p>Описание: {{ product.description }}</p>
+                <p>Цена: {{ product.price }} рублей</p>
+            </li>
+        {% empty %}
+            <li class="list-group-item">Ваша корзина пуста</li>
+        {% endfor %}
+    </ul>
+	<a class="btn btn-primary btn-lg" href="{% url 'catalog' %}">Выбрать ещё букет</a>
+	<br>
+	<br>
+	<form method="post" action="{% url 'place_order' %}">
+		{% csrf_token %}
+		<button type = "submit" class="btn btn-primary btn-lg">Подтвердить заказ</button>
+	</form>
+
+	<br>
+	<form method="post" action="{% url 'clear_cart' %}">
+		{% csrf_token %}
+		<button type = "submit" class="btn btn-primary btn-lg">Очистить корзину</button>
+	</form>
+</div>
+
+{% endblock %}

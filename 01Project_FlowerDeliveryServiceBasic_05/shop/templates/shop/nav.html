@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-warning">
+  <div class="container-fluid">
+    <a class="navbar-brand bg-dark fw-semibold text-light rounded-pill p-2" href="#">Цветочница</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold text-dark border border-dark rounded-pill p-2 mx-2" href="{% url 'index' %}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold text-dark border border-dark rounded-pill p-2 mx-2" href="{% url 'catalog' %}">Каталог</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold text-dark border border-dark rounded-pill p-2 mx-2" href="{% url 'orders' %}">Корзина</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold text-dark border border-dark rounded-pill p-2 mx-2" href="{% url 'my_orders' %}">Заказы</a>
+        </li>
+
+<!--        <li class="nav-item dropdown">-->
+<!--          <a class="nav-link dropdown-toggle fw-semibold text-dark p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--            Выпадающий список-->
+<!--          </a>-->
+<!--          <ul class="dropdown-menu ">-->
+<!--            <li><a class="dropdown-item fw-semibold text-dark p-2" href="#">Действие</a></li>-->
+<!--            <li><a class="dropdown-item fw-semibold text-dark p-2" href="#">Другое действие</a></li>-->
+<!--            <li><hr class="dropdown-divider fw-semibold text-dark p-2"></li>-->
+<!--            <li><a class="dropdown-item fw-semibold text-dark p-2" href="#">Что-то еще здесь</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2 fw-semibold text-dark p-2" type="search" placeholder="Поиск" aria-label="Поиск">
+        <button class="btn btn-outline-secondary fw-semibold p-2" type="submit">Поиск</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+

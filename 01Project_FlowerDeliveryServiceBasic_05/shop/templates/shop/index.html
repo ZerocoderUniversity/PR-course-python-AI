@@ -1,0 +1,21 @@
+{% extends 'shop/layout.html' %}
+
+
+{% block title %}
+<title xmlns="http://www.w3.org/1999/html">Магазин цветов</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<!--<h1> А вот и {{ caption }}</h1>-->
+<div class="container my-3 mx-2">
+	<p> Добро пожаловать в наш уникальный и неповторимый магазин цветов!
+		Здесь вы сможете выбрать себе самый прекрасный букет,
+		который обязательно порадует ваших близких.  <b><a href="{% url 'catalog' %}">НАШ КАТАЛОГ</a></b>
+	</p>
+	<br>
+		<img src="{% static 'shop/img/b12.jpg' %}" width="50%">
+	<br>
+</div>
+
+{% endblock %}
