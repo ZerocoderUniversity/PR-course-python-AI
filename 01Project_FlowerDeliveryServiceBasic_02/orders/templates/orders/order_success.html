@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Ваш заказ успешно оформлен!</h1>
+    <p>Наши менеджеры свяжутся с вами для уточнения деталей. Спасибо за ваш заказ!</p>
+    <a href="{% url 'base:index' %}" class="btn btn-primary">Вернуться на главную</a>
+</div>
+{% endblock %}

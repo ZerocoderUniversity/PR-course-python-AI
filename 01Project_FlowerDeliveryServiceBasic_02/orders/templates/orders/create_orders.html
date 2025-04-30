@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4" style="text-align: center;">Подтверждение заказа</h1>
+
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid" style="max-width: 80%;">
+        </div>
+        <div class="col-md-4 d-flex flex-column justify-content-center">
+            <h2>{{ product.name }}</h2>
+            <br>
+            <h5 style="font-style: italic;">{{ product.description }}</h5>
+            <br>
+            <h3 class="mt-4" style="font-style: italic;">Цена: <strong>{{ product.price }}</strong> ₽</h3>
+        </div>
+    </div>
+
+    <div class="mt-4 row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="phone_number" class="form-label"><strong>Номер телефона:</strong></label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ user.phone_number }}" placeholder="Если всё ок, оставьте поле пустым">
+                </div>
+
+                <div class="mb-3">
+                    <label for="first_name" class="form-label"><strong>Имя:</strong></label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="last_name" class="form-label"><strong>Фамилия:</strong></label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label"><strong>Адрес доставки:</strong></label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="comment" class="form-label"><strong>Комментарии:</strong></label>
+                    <textarea class="form-control" id="comment" name="comment" placeholder="Здесь опишите всё, что нам нужно знать"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary mr-2">Назад</a>
+                    <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <br>
+{% endblock %}
