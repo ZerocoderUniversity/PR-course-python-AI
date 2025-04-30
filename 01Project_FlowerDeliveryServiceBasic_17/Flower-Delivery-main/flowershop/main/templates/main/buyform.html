@@ -1,0 +1,23 @@
+{% extends 'main/layoute.html' %}
+
+
+{% block title %}
+    <title>Первая страница на django</title>
+{% endblock %}
+
+{% block content%}
+
+
+<form id="myForm" method="post" action="{% url 'send_to_telegram' %}">
+  {% csrf_token %}
+<div class="row">
+  <div class="col">
+    <input type="text" name = 'name' class="form-control" placeholder="Имя" aria-label="Имя">
+  </div>
+  <div class="col">
+    <input type="text" name = 'message' class="form-control" placeholder="Адрес доставки" aria-label="Фамилия">
+  </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</div>
+</form>
+{% endblock %}

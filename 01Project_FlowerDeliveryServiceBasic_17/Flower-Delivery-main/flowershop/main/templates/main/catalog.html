@@ -1,0 +1,75 @@
+{% extends 'main/layoute.html' %}
+{% load static %}
+{% block title %}
+    <title>Вторая страничка </title>
+{% endblock %}
+
+{% block content%}
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0 card text-center">
+    <div class="card">
+      <img src="{% static 'main/img/redrose.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Букет из красных роз</h5>
+        <p class="card-text">Очень сочный и красивый букет состоящий из 25 отборных роз</p>
+        <a href="{% url 'buyform' %}" class="btn btn-primary">Заказать</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 card text-center">
+    <div class="card">
+      <img src="{% static 'main/img/pinkrose.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Букет из розовых роз</h5>
+        <p class="card-text">Очень сочный и красивый букет состоящий из 25 отборных роз</p>
+        <a href="{% url 'buyform' %}" class="btn btn-primary">Заказать</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0 card text-center">
+    <div class="card">
+      <img src="{% static 'main/img/whiterose.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Букет из белых роз</h5>
+        <p class="card-text">Очень сочный и красивый букет состоящий из 25 отборных роз</p>
+        <a href="{% url 'buyform' %}" class="btn btn-primary">Заказать</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 card text-center">
+    <div class="card">
+      <img src="{% static 'main/img/yellowrose.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Букет из желтых роз</h5>
+        <p class="card-text">Очень сочный и красивый букет состоящий из 25 отборных роз</p>
+        <a href="{% url 'buyform' %}" class="btn btn-primary">Заказать</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0 card text-center">
+    <div class="card">
+      <img src="{% static 'main/img/bluerose.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Букет из синих рох</h5>
+        <p class="card-text">Очень сочный и красивый букет состоящий из 25 отборных роз</p>
+        <a href="{% url 'buyform' %}" class="btn btn-primary">Заказать</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 card text-center">
+    <div class="card">
+      <img src="{% static 'main/img/blackrose2.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Букет из черных роз</h5>
+        <p class="card-text">Очень сочный и красивый букет состоящий из 25 отборных роз</p>
+        <a href="{% url 'buyform' %}" class="btn btn-primary">Заказать</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

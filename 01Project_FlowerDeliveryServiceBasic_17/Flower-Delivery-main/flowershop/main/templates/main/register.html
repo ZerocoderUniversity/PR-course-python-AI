@@ -1,0 +1,16 @@
+{% extends 'main/layoute.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Вторая страничка </title>
+{% endblock %}
+
+{% block content%}
+<h1>Регистрация нового пользователя</h1>
+     <form method="post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit">Register</button>
+     </form>
+{% endblock %}

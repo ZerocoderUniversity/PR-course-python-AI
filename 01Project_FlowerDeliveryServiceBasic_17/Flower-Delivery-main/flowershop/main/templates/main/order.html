@@ -1,0 +1,13 @@
+<h1>Place Order</h1>
+     <form method="post">
+         {% csrf_token %}
+         <ul>
+             {% for flower in flowers %}
+             <li>
+                 <input type="checkbox" name="flowers" value="{{ flower.id }}">
+                 {{ flower.name }} - ${{ flower.price }}
+             </li>
+             {% endfor %}
+         </ul>
+         <button type="submit">Order</button>
+     </form>
