@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Добро пожаловать{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="my-5">Добро пожаловать в Доставку Цветов</h1>
+    <p class="lead">Мы доставим самые свежие и красивые букеты прямо к вашему порогу.</p>
+    <img src="{% static 'images/магазин.jpg' %}" alt="Доставка цветов" class="img-fluid rounded my-4">
+    <a href="{% url 'product_list' %}" class="btn btn-primary btn-lg">Посмотреть каталог</a>
+</div>
+{% endblock %}

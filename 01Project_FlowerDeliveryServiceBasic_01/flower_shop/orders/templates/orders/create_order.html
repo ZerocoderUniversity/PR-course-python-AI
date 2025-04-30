@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<h2>Оформление заказа</h2>
+
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+    {{ error_message }}
+</div>
+{% else %}
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h3>Выберите цветы</h3>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price }} ₽</p>
+                    <input type="checkbox" name="products" value="{{ product.id }}">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Оформить заказ</button>
+</form>
+{% endif %}
+<p class="text-muted mt-3">Заказы принимаются только в рабочее время: с 9:00 до 23:00.</p>
+{% endblock %}

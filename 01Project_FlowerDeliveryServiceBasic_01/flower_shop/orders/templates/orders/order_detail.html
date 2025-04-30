@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Детали заказа{% endblock %}
+
+{% block content %}
+<h2>Детали заказа</h2>
+<p><strong>Номер заказа:</strong> {{ order.id }}</p>
+<p><strong>Дата:</strong> {{ order.created_at }}</p>
+<p><strong>Адрес доставки:</strong> {{ order.delivery_address }}</p>
+<h3>Товары</h3>
+<ul>
+    {% for product in order.products.all %}
+    <li>{{ product.name }} - {{ product.price }} ₽</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_order' %}" class="btn btn-secondary">Создать новый заказ</a>
+{% endblock %}
