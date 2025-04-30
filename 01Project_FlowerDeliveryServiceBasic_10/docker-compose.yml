@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=your_secret_key
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn --bind 0.0.0.0:8000 flower_delivery.wsgi:application"
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    environment:
+      - DJANGO_SETTINGS_MODULE=flower_delivery.settings
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    volumes:
+      - .:/app

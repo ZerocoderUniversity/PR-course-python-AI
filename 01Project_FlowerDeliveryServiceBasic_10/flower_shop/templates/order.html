@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оформление заказа</title>
+</head>
+<body>
+    <h2>Оформление заказа</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Оформить заказ</button>
+    </form>
+</body>
+</html>

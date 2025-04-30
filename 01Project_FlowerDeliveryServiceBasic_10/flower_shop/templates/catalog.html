@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог цветов</title>
+</head>
+<body>
+    <h2>Каталог цветов</h2>
+    <ul>
+    {% for product in products %}
+        <li>{{ product.name }} - {{ product.price }} руб.</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'order' %}">Оформить заказ</a>
+</body>
+</html>

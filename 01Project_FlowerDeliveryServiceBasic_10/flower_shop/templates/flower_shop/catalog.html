@@ -1,0 +1,10 @@
+{% extends 'flower_shop/base.html' %}
+
+{% block content %}
+<h1>Каталог цветов</h1>
+<ul>
+    {% for product in products %}
+    <li>{{ product.name }} - {{ product.price }} руб.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
