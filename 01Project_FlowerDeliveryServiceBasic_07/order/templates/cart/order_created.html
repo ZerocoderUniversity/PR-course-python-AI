@@ -1,0 +1,14 @@
+{% extends 'register/base.html'%}
+
+{% block title %}
+<title>Корзина</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Заказ оформлен</h1>
+    <p>Ваш заказ номер {{ order.id }} был успешно оформлен.</p>
+    <a href="{% url 'catalog' %}">Вернуться к каталогу</a>
+
+
+{% endblock %}
