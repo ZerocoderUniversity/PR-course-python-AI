@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% block title %} Цветы {% endblock %}
+
+{% block content %}
+
+<style>
+  .custom-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .larger-text {
+    font-size: 1.5em; /* или другой размер, который вам нужен */
+}
+</style>
+<div class="container mt-5">
+    <h1  class="text-center">Добро пожаловать в Flowers ONline!</h1>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-lg-6">
+
+            <br>
+            <p class="lead larger-text">
+                Мы рады приветствовать Вас на нашем сайте <strong>Flowers ONline</strong>. Мы предлагаем быструю и надежную доставку цветов по приемлемым ценам. Наш ассортимент включает в себя широкий выбор букетов и композиций для любого повода: дни рождения, юбилеи, свадьбы и многое другое.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://avatars.mds.yandex.net/i?id=69f5fe823b9e84b4dec72c1ad08e5599_l-5221961-images-thumbs&n=13" class="custom-image" alt="Букет цветов">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <p class="lead text-center larger-text">
+                <em>
+                    Наши флористы создают уникальные букеты с любовью и вниманием к каждой детали. Мы гарантируем свежесть и качество наших цветов. Заказывайте у нас, и мы позаботимся о том, чтобы ваш подарок был доставлен вовремя и произвел незабываемое впечатление!
+                </em>
+            </p>
+            <div class="text-center mt-4">
+                <a href="/catalog" class="btn btn-primary btn-lg">В каталог</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

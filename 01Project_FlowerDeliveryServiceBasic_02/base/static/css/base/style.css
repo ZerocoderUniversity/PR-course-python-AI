@@ -1,0 +1,26 @@
+.btn-primary {
+    background-color: rgb(214, 50, 3);
+    border-color: #ff0000;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.btn-primary:hover {
+    background-color: #ff0000 !important; /* Красный фон при наведении */
+    border-color: #cc0000 !important; /* Чуть темнее красная граница */
+    color: #ffc500 !important; /* Белый текст при наведении */
+}
+
+.form-text {
+    font-size: 0.9rem; /* Мелкий текст для подсказок */
+}
+
+.text-muted {
+    color: rgba(0, 0, 0, 0.6) !important; /* Полупрозрачный текст */
+}
+
+.text-danger {
+    font-size: 0.9rem; /* Мелкий текст для ошибок */
+    color: #e3342f !important; /* Более заметный красный */
+}
+

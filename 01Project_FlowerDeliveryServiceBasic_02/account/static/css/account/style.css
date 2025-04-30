@@ -1,0 +1,145 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center; /* Центрирование текста внутри контейнера */
+}
+
+.quote {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #555; /* Цвет текста для цитаты */
+}
+
+.quote-author {
+    font-size: 0.9em;
+    color: #888; /* Более светлый цвет для автора */
+    margin-top: 10px;
+    font-style: italic; /* Курсив для автора */
+    text-align: right; /* Выравнивание автора справа */
+    display: block;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form {
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blockquote-footer {
+    font-size: 0.9em;
+    color: #888; /* Более светлый цвет для автора */
+    margin-top: 10px;
+    display: block;
+}
+
+.btn-primary {
+    background-color: rgb(214, 50, 3);
+    border-color: #ff0000;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.btn-primary:hover {
+    background-color: #ff0000 !important;
+    border-color: #cc0000 !important;
+    color: #ffc500 !important;
+}
+
+.form-text {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.text-danger {
+    font-size: 0.9rem;
+    color: #e3342f !important;
+}
+
+
+.col-form-label {
+    text-align: right; /* Подписи выровнены по правому краю */
+    font-weight: bold; /* Выделение текста подписей */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%; /* Поля занимают всю доступную ширину */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Контейнер формы */
+.form-vertical {
+    display: flex;
+    flex-direction: column; /* Элементы формы выстроены в столбик */
+    align-items: flex-start; /* Выровнены по левому краю */
+    gap: 0.5rem; /* Расстояние между строками */
+}
+
+/* Поля ввода и метки */
+.form-group-prof {
+    display: flex;
+    flex-direction: row; /* Измените направление на column */
+    width: 100%; /* Группы занимают всю ширину */
+    margin-bottom: 0.5rem; /* Уменьшите расстояние между строками */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Измените направление на column */
+    width: 100%; /* Группы занимают всю ширину */
+    margin-bottom: 0.5rem; /* Уменьшите расстояние между строками */
+}
+
+.form-label {
+    min-width: 200px; /* Ширина для подписи */
+    text-align: center; /* Выравнивание текста в подписи */
+    margin-right: 10px; /* Отступ от поля */
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    flex-grow: 1; /* Поля ввода растягиваются, занимая всю оставшуюся ширину */
+    max-width: 400px; /* Максимальная ширина поля */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group small {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+  display: block;
+  opacity: 0.7;
+  margin-top: 0;
+}
+
+.form-text.text-muted {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin-top: 0;
+}

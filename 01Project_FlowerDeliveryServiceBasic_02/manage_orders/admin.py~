@@ -1,0 +1,22 @@
+from django.contrib import admin
+from .models import ManageOrder
+
+class ManageOrderAdmin(admin.ModelAdmin):
+    list_display = ['order_id', 'first_name', 'last_name', 'phone_number', 'status', 'order_date', 'order_product']
+    readonly_fields = ('order_id', 'phone_number', 'first_name', 'last_name', 'user_comment')
+    fields = ('status', 'manager_comment', 'order_id', 'phone_number', 'first_name', 'last_name', 'user_comment')
+    list_filter = ('status',)
+
+    def order_id(self, obj):
+        return obj.order_id.order_number
+    order_id.short_description = 'Заказ №'
+
+    def order_date(self, obj):
+        return obj.order_id.order_date
+    order_date.short_description = 'Дата заказа'
+
+    def order_product(self, obj):
+        return obj.order_id.product.name
+    order_product.short_description = 'Продукт'
+
+admin.site.register(ManageOrder, ManageOrderAdmin)

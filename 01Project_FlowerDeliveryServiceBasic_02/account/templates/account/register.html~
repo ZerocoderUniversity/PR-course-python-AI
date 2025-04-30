@@ -1,0 +1,34 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/account/style.css' %}">
+    <br>
+    <br>
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <blockquote class="blockquote text-center">
+            <p class="mb-2">Сколько бы мы ни говорили о пустоте жизни, иногда достаточно лишь одного цветка, чтобы нас разубедить.</p>
+            <span class="lead larger-text"><em>(c)Анатоль Франс</em></span>
+        </blockquote>
+        <div class="login-container mt-4">
+        <div class="login-form card p-4 shadow">
+                <h3 class="text-center mb-2">Регистрация</h3>
+                <div class="card-body">
+                    <form method="post" class="form-vertical">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.label }} {{ field }}
+                                {% if field.help_text %}
+                                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

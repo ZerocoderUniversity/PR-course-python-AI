@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Каталог продуктов</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h4 class="card-title">{{ product.name }}</h4>
+                    <p class="lead larger-text"><em>{{ product.description }}</em></p>
+                    <p class="card-text"><strong>Цена:</strong> {{ product.price }} ₽</p>
+                    <a href="{% url 'orders:create_order' product.id %}" class="btn btn-primary">Заказать</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>В данный момент нет доступных продуктов.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

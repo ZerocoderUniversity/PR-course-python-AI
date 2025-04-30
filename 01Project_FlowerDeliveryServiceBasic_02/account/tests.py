@@ -1,0 +1,20 @@
+from django.test import TestCase
+from django.contrib.auth import get_user_model
+
+#Тест на создание позльзователя
+class UserTestCase(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='testuser1',
+            email='testuser@example.com',
+            password='Testpassword123'
+        )
+
+    def test_user_is_created(self):
+        self.assertEqual(self.user.username, 'testuser1')
+        self.assertEqual(self.user.email, 'testuser@example.com')
+
+    def test_user_can_login(self):
+        self.client.login(username='testuser1', password='Testpassword123')
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
