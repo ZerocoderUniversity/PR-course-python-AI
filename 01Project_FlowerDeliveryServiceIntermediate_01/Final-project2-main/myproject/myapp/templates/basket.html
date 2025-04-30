@@ -1,0 +1,116 @@
+{% extends 'layoute.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Корзина</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Корзина</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Цена за шт.</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in basket.items.all %}
+            <tr>
+                <td>
+                    <!-- Отображаем изображение товара -->
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 50px; height: auto;">
+                </td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.product.price }} руб.</td>
+                <td>
+                    <a href="{% url 'remove_from_basket' item.id %}" class="btn btn-danger">Удалить</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Корзина пуста</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if basket.items.count > 0 %}
+    <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <h3>Заполните поля</h3>
+        <hr>
+
+        <!-- Синяя рамка для Дата и время доставки и Получатель -->
+        <div class="border border-primary rounded p-3 mb-3">
+            <img src="{% static 'img/clock.png' %}" alt="Logo" style="height: 40px; margin-right: 0px; display: inline-block; vertical-align: middle;">
+            <h4 style="display: inline-block; vertical-align: middle;">Дата и время доставки</h4>
+            <hr>
+            <div class="form-group">
+                <label for="date">Выберите дату</label>
+                <input type="date" name="date" id="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Выберите время</label>
+                <select name="time" id="time" class="form-control">
+                    <option value="" disabled selected hidden>Выбрать</option>
+                    <option value="С 07:00 до 11:00">С 07:00 до 11:00</option>
+                    <option value="С 11:00 до 15:00">С 11:00 до 15:00</option>
+                    <option value="С 15:00 до 19:00">С 15:00 до 19:00</option>
+                    <option value="С 19:00 до 23:00">С 19:00 до 23:00</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Желтая рамка для Получатель -->
+        <div class="border border-warning rounded p-3 mb-3">
+            <img src="{% static 'img/recipient.png' %}" alt="Logo" style="height: 40px; margin-right: 0px; display: inline-block; vertical-align: middle;">
+            <h4 style="display: inline-block; vertical-align: middle;">Получатель</h4>
+            <hr>
+            <div class="form-group">
+                <label for="city">Город</label>
+                <select name="city" id="city" class="form-control" required>
+                    <option value="" disabled selected hidden>Выберите город</option>
+                    <option value="Москва">Москва</option>
+                    <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    <option value="Краснодар">Краснодар</option>
+                    <option value="Самара">Самара</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address">Адрес доставки</label>
+                <input type="text" name="address" id="address" class="form-control" placeholder="Адрес" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон получателя</label>
+                <input type="tel" name="phone" id="phone" class="form-control" placeholder="Ваш номер телефона" pattern="[0-9]+" required>
+            </div>
+        </div>
+
+        <!-- Зеленая рамка для Комментарий -->
+        <div class="border border-success rounded p-3 mb-3">
+            <img src="{% static 'img/comment.png' %}" alt="Logo" style="height: 40px; margin-right: 0px; display: inline-block; vertical-align: middle;">
+            <h4 style="display: inline-block; vertical-align: middle;">Комментарий (не обязательно)</h4>
+            <hr>
+            <div class="form-group">
+                <br><textarea name="comment" id="comment" class="form-control" rows="4" placeholder="Ваш комментарий"></textarea>
+            </div>
+        </div>
+        <h4>Общая стоимость: {{ total_price }} руб.</h4>
+        <button type="submit" class="btn btn-success">Оплатить</button>
+    </form>
+
+    {% endif %}
+
+    {% if message %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
