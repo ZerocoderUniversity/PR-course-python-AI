@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        {% for flower in flowers %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ flower.image.url }}" class="card-img-top" alt="{{ flower.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ flower.name }}</h5>
+                        <p class="card-text">{{ flower.description }}</p>
+                        <p class="card-text"><strong>{{ flower.price }} руб.</strong></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <!-- Кнопка для добавления в корзину -->
+                        <form action="{% url 'add_to_cart' flower.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
