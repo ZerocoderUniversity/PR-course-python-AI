@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'users:profile' %}">Учетная запись</a></li>
+{% endblock %}
+
+
+{% block content %}
+<h2>Профиль</h2>
+<p>Имя пользователя: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+
+{% if user.is_staff %}
+    <a href="{% url 'admin:index' %}" >Панель администратора</a>
+{% endif %}
+
+{% endblock %}
